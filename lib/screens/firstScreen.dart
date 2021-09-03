@@ -81,7 +81,8 @@ class _FirstScreenState extends State<FirstScreen> {
                                             return AlertDialog(
                                               title: Text("Uyarı"),
                                               content: Center(
-                                                child: Text("To be Countinue"),
+                                                child:
+                                                    Text("To be Countinue ..."),
                                               ),
                                               actions: [
                                                 TextButton(
