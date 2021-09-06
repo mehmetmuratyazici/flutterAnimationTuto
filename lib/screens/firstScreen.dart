@@ -1,3 +1,5 @@
+
+import 'package:animation_tuto/screens/iconlar.dart';
 import 'package:animation_tuto/screens/secondscreen.dart';
 import 'package:flutter/material.dart';
 
@@ -79,7 +81,7 @@ class _FirstScreenState extends State<FirstScreen> {
                                       Navigator.of(context).push(
                                           MaterialPageRoute(
                                               builder: (context) =>
-                                                  Secondscreen()));
+                                              Iconsscreen()));
                                       return;
                                       showDialog(
                                           context: context,
