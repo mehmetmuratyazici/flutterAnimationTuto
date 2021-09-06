@@ -2,6 +2,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 class Secondscreen extends StatefulWidget {
   const Secondscreen({Key? key}) : super(key: key);
@@ -28,6 +29,7 @@ class _SecondscreenState extends State<Secondscreen> {
     return result.length < width ? result.padLeft(1,"0") : result;
    
   }
+
    
   void showMessage() {}
 
@@ -58,9 +60,14 @@ class _SecondscreenState extends State<Secondscreen> {
                     showDialog(
                       context: context, 
                       builder:(context){
-                        return AlertDialog(
-                          title: Text(""),
-                        );
+                        return AlertDialog(                         
+                          title: Text(listItems![index]),
+
+                          
+
+                        
+                          ); 
+                      
                       }
                       );
                   },
