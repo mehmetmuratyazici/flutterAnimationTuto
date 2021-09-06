@@ -1,3 +1,4 @@
+import 'package:animation_tuto/screens/secondscreen.dart';
 import 'package:flutter/material.dart';
 
 class FirstScreen extends StatefulWidget {
@@ -74,11 +75,13 @@ class _FirstScreenState extends State<FirstScreen> {
                                 child: RaisedButton(
                                     color: Colors.red,
                                     child: Text("Login"),
-                                    onPressed: () {
+                                    onPressed: () {                               
+                                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => Secondscreen()));                                                                                                                     
                                       showDialog(
                                           context: context,
                                           builder: (context) {
                                             return AlertDialog(
+                                            
                                               title: Text("Uyarı"),
                                               content: Center(
                                                 child:
@@ -89,12 +92,18 @@ class _FirstScreenState extends State<FirstScreen> {
                                                     onPressed: () {
                                                       Navigator.pop(context);
                                                     },
+                                                   
                                                     child: Text("Ok"))
                                               ],
+                                               
                                             );
+                                      
                                           });
+                                      
                                     }),
+                                
                               ),
+                              
                             )
                           ],
                         ),
