@@ -56,7 +56,6 @@ class _SecondscreenState extends State<Secondscreen> {
         Icons.keyboard,
         size: 150,
       ),
-     
       Icon(
         Icons.voicemail_outlined,
         size: 150,
@@ -90,7 +89,7 @@ class _SecondscreenState extends State<Secondscreen> {
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.keyboard,
+              Icons.keyboard_alt_outlined,
               color: Colors.red,
             ),
             label: 'Keypad',
@@ -104,19 +103,17 @@ class _SecondscreenState extends State<Secondscreen> {
           ),
         ]);
 
-    return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: Scaffold(
-          appBar: AppBar(          
-            backgroundColor: Colors.red.shade400, 
-            centerTitle: true,           
-            title: Text("Recents"),
-          ),
-          bottomNavigationBar: navbar,
-          body: Center(
-            child: _pages[_selectedIndex],
-          ),
-        ));
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.red.shade400,
+        centerTitle: true,
+        title: Text("Recents"),
+      ),
+      bottomNavigationBar: navbar,
+      body: Center(
+        child: _pages[_selectedIndex],
+      ),
+    );
   }
 
   dynamic contacts() {
