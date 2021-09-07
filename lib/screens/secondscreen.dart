@@ -1,7 +1,12 @@
+import 'dart:ffi';
 import 'dart:math';
 
 import 'package:animation_tuto/screens/thirdscreen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+
+
+
 
 class Secondscreen extends StatefulWidget {
   const Secondscreen({Key? key}) : super(key: key);
@@ -52,9 +57,12 @@ class _SecondscreenState extends State<Secondscreen> {
         Icons.people,
         size: 150,
       ),
+     call(),
       Icon(
         Icons.keyboard,
         size: 150,
+        
+      
       ),
       Icon(
         Icons.voicemail_outlined,
@@ -70,6 +78,7 @@ class _SecondscreenState extends State<Secondscreen> {
             icon: Icon(
               Icons.star_outlined,
               color: Colors.red,
+              
             ),
             label: 'Favorites',
           ),
@@ -89,7 +98,7 @@ class _SecondscreenState extends State<Secondscreen> {
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.keyboard_alt_outlined,
+              Icons.apps,
               color: Colors.red,
             ),
             label: 'Keypad',
@@ -115,6 +124,127 @@ class _SecondscreenState extends State<Secondscreen> {
       ),
     );
   }
+
+
+  
+  dynamic call(){
+    return Scaffold(
+      body: Center(        
+        child:
+        Column(
+          
+          children: [   
+            Container(
+              padding: EdgeInsets.only(bottom: 20.0,left: 20.0,right:20.0,top:20.0),
+              child:TextField (        
+                 decoration:
+                 InputDecoration(hintText: ""),             
+                 )
+                 
+            ),
+            Padding(
+              padding: EdgeInsets.only(),
+             
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [  
+                                              
+                    FloatingActionButton(                     
+                      backgroundColor: Colors.grey,                      
+                      onPressed: (){},
+                      child: Text("1"),
+                    ),
+                    FloatingActionButton(                      
+                      backgroundColor: Colors.grey,                     
+                      onPressed: (){},
+                      child: Text("2"),
+                      ),
+                      FloatingActionButton(
+                      backgroundColor: Colors.grey,                     
+                      onPressed: (){},
+                      child: Text("3"),
+                      )  
+                  ],                  
+                ), 
+        ),
+                     Row(
+                     mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                    FloatingActionButton(
+                      backgroundColor: Colors.grey,
+                      onPressed: (){},
+                      child: Text("4"),
+                    ),
+                    FloatingActionButton(                      
+                      backgroundColor: Colors.grey,                     
+                      onPressed: (){},
+                      child: Text("5"),
+                      ),
+                      FloatingActionButton(
+                      backgroundColor: Colors.grey,                     
+                      onPressed: (){},
+                      child: Text("6"),
+                      )  
+                  ],               
+                  ),
+                  Row( 
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                    FloatingActionButton(
+                      backgroundColor: Colors.grey,
+                      onPressed: (){},
+                      child: Text("7"),
+                    ),
+                    FloatingActionButton(                      
+                      backgroundColor: Colors.grey,                     
+                      onPressed: (){},
+                      child: Text("8"),
+                      ),
+                      FloatingActionButton(
+                      backgroundColor: Colors.grey,                     
+                      onPressed: (){},
+                      child: Text("9"),
+                      )  
+                  ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                      FloatingActionButton(
+                      backgroundColor: Colors.grey,
+                      onPressed: (){},
+                      child: Text("*"),
+                    ),
+                    FloatingActionButton(                      
+                      backgroundColor: Colors.grey,                     
+                      onPressed: (){},
+                      child: Text("0"),
+                      ),
+                      FloatingActionButton(
+                      backgroundColor: Colors.grey,                     
+                      onPressed: (){},
+                      child: Text("#"),
+                      )  
+                  ],
+                    )      
+                   
+          ],
+        ),
+          
+        ),
+        floatingActionButtonLocation:FloatingActionButtonLocation.centerFloat ,
+        floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.phone),        
+          backgroundColor: Colors.red.shade400,           
+          onPressed: (){}
+          
+          ),
+        
+          
+      );
+    
+  }
+  
 
   dynamic contacts() {
     return ListView.builder(
@@ -154,6 +284,13 @@ class _SecondscreenState extends State<Secondscreen> {
               },
             ),
           );
+         
         });
+        
   }
+
+  
 }
+
+
+
