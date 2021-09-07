@@ -9,17 +9,7 @@ class Iconsscreen extends StatefulWidget {
 }
 
 void changeScreen(BuildContext _context, Widget _widget) {
-  print(_context);
   Navigator.push(_context, MaterialPageRoute(builder: (_context) => _widget));
-}
-
-dynamic createButton(
-    Function fn, Icon _icon, double _size, BuildContext? _context) {
-  return new IconButton(
-    onPressed: fn(_context),
-    icon: _icon,
-    iconSize: _size,
-  );
 }
 
 class _IconsscreenState extends State<Iconsscreen> {
@@ -64,18 +54,6 @@ class _IconsscreenState extends State<Iconsscreen> {
               color: Colors.white,
               onPressed: () {},
             ),
-            /*
-            createButton(
-              (context) {
-                print(1);
-              },
-              Icon(
-                Icons.settings_outlined,
-                color: Colors.white,
-              ),
-              100,
-              context,
-            ),*/
           ],
         ),
       ),
