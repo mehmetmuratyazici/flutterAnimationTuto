@@ -2,6 +2,7 @@
 import 'dart:html';
 import 'dart:math';
 
+import 'package:animation_tuto/screens/Iconlar.dart';
 import 'package:animation_tuto/screens/thirdscreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -136,56 +137,51 @@ class _SecondscreenState extends State<Secondscreen> {
   dynamic call(){
    
     return Scaffold(
-      body: Center(        
+      body: Center(              
         child:
         Column(
-          
+        
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           
         
           children: [   
-            
-            
-             TextField(
-               controller: number,
-            
-            decoration: new InputDecoration(labelText: "",),
-            
+           
+           TextField(               
+            controller: number,            
+            decoration: new InputDecoration(),            
             keyboardType: TextInputType.number,
             inputFormatters: <TextInputFormatter>[
             FilteringTextInputFormatter.digitsOnly
-           ], 
+           ],
+            
           ),
-            Padding(
-              padding: EdgeInsets.all(0),
-               
-             
-                child: Row(
-                  
+          
+            Padding(              
+              padding: EdgeInsets.all(0),                                 
+                child:Row(                                    
                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,                  
                    children: [  
-                                              
-                    FloatingActionButton(                     
-                      backgroundColor: Colors.grey,                                            
-                      child: Text("1"),
-                      onPressed: (){
-                       
-  }, 
-                     
-               
+                                                          
+                    FloatingActionButton(                    
+                      backgroundColor: Colors.grey,                                                                
+                      child: Text("1",style: TextStyle(fontSize: 30),),
                                          
-                      
+                      onPressed:(){
+                        
+                        
+                      }  
+
                     ),
-                    
+                   
                     FloatingActionButton(                     
                       backgroundColor: Colors.grey,                     
                       onPressed: (){},
-                      child: Text("2"),
+                      child: Text("2",style: TextStyle(fontSize: 30),),
                       ),
                       FloatingActionButton(
                       backgroundColor: Colors.grey,                     
                       onPressed: (){},
-                      child: Text("3"),
+                      child: Text("3",style: TextStyle(fontSize: 30),),
                       )  
                   ],                  
                 ), 
@@ -194,19 +190,19 @@ class _SecondscreenState extends State<Secondscreen> {
                      mainAxisAlignment: MainAxisAlignment.spaceEvenly, 
                     children: [
                     FloatingActionButton(
-                      backgroundColor: Colors.grey,
-                      onPressed: (){},
-                      child: Text("4"),
+                      backgroundColor: Colors.grey,                                          
+                      child: Text("4",style: TextStyle(fontSize: 30),),
+                       onPressed:(){}
                     ),
                     FloatingActionButton(                      
                       backgroundColor: Colors.grey,                     
                       onPressed: (){},
-                      child: Text("5"),
+                      child: Text("5",style: TextStyle(fontSize: 30),),
                       ),
                       FloatingActionButton(
                       backgroundColor: Colors.grey,                     
                       onPressed: (){},
-                      child: Text("6"),
+                      child: Text("6",style: TextStyle(fontSize: 30),),
                       )  
                   ],               
                   ),
@@ -216,17 +212,17 @@ class _SecondscreenState extends State<Secondscreen> {
                     FloatingActionButton(
                       backgroundColor: Colors.grey,
                       onPressed: (){},
-                      child: Text("7"),
+                      child: Text("7",style: TextStyle(fontSize: 30),),
                     ),
                     FloatingActionButton(                      
                       backgroundColor: Colors.grey,                     
                       onPressed: (){},
-                      child: Text("8"),
+                      child: Text("8",style: TextStyle(fontSize: 30),),
                       ),
                       FloatingActionButton(
                       backgroundColor: Colors.grey,                     
                       onPressed: (){},
-                      child: Text("9"),
+                      child: Text("9",style: TextStyle(fontSize: 30),),
                       )  
                   ],
                     ),
@@ -236,25 +232,26 @@ class _SecondscreenState extends State<Secondscreen> {
                       FloatingActionButton(
                       backgroundColor: Colors.grey,
                       onPressed: (){},
-                      child: Text("*"),
+                      child: Text("*",style: TextStyle(fontSize: 30),),
                     ),
                     FloatingActionButton(                      
                       backgroundColor: Colors.grey,                     
                       onPressed: (){},
-                      child: Text("0"),
+                      child: Text("0",style: TextStyle(fontSize: 30),),
                       ),
                       FloatingActionButton(
                       backgroundColor: Colors.grey,                     
                       onPressed: (){},
-                      child: Text("#"),
+                      child: Text("#",style: TextStyle(fontSize: 30),),
                       )  
                   ],
-                    )      
-                   
+                    ),      
+                 
           ],
         ),
-          
+        
         ),
+        
         floatingActionButtonLocation:FloatingActionButtonLocation.miniCenterDocked,
         floatingActionButton: FloatingActionButton(
           child: Icon(Icons.phone),        
@@ -262,6 +259,7 @@ class _SecondscreenState extends State<Secondscreen> {
           onPressed: (){}
           
           ),
+        
         
           
       );
