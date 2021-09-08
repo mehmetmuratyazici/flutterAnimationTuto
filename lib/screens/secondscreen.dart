@@ -1,15 +1,10 @@
 
-import 'dart:html';
 import 'dart:math';
-
-import 'package:animation_tuto/screens/Iconlar.dart';
+import 'package:animation_tuto/screens/Icons.dart';
 import 'package:animation_tuto/screens/thirdscreen.dart';
+import 'package:animation_tuto/widget/callwidget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
-
-
-
 
 class Secondscreen extends StatefulWidget {
   const Secondscreen({Key? key}) : super(key: key);
@@ -33,14 +28,12 @@ class _SecondscreenState extends State<Secondscreen> {
   }
 
   String getRandNumber(Random rn, num width) {
-    
     String result = rn.nextInt(pow(10, width).toInt()).toString();
     return result.length < width ? result.padLeft(1, "0") : result;
   }
 
   void showMessage() {}
-  
-  final number = TextEditingController();
+
   int _selectedIndex = 0;
 
   @override
@@ -63,19 +56,16 @@ class _SecondscreenState extends State<Secondscreen> {
         Icons.people,
         size: 150,
       ),
-     call(),
+      call(),
       Icon(
         Icons.keyboard,
         size: 150,
-        
-      
       ),
       Icon(
         Icons.voicemail_outlined,
         size: 150,
       ),
     ];
-    
 
     final navbar = BottomNavigationBar(
         currentIndex: _selectedIndex, //New
@@ -85,7 +75,6 @@ class _SecondscreenState extends State<Secondscreen> {
             icon: Icon(
               Icons.star_outlined,
               color: Colors.red,
-              
             ),
             label: 'Favorites',
           ),
@@ -132,186 +121,46 @@ class _SecondscreenState extends State<Secondscreen> {
     );
   }
 
-
-  
-  dynamic call(){
-   
-    return Scaffold(
-      body: Center(              
-        child:
-        Column(
-        
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          
-        
-          children: [   
-           
-           TextField(               
-            controller: number,            
-            decoration: new InputDecoration(),            
-            keyboardType: TextInputType.number,
-            inputFormatters: <TextInputFormatter>[
-            FilteringTextInputFormatter.digitsOnly
-           ],
-            
-          ),
-          
-            Padding(              
-              padding: EdgeInsets.all(0),                                 
-                child:Row(                                    
-                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,                  
-                   children: [  
-                                                          
-                    FloatingActionButton(                    
-                      backgroundColor: Colors.grey,                                                                
-                      child: Text("1",style: TextStyle(fontSize: 30),),
-                                         
-                      onPressed:(){
-                        
-                        
-                      }  
-
-                    ),
-                   
-                    FloatingActionButton(                     
-                      backgroundColor: Colors.grey,                     
-                      onPressed: (){},
-                      child: Text("2",style: TextStyle(fontSize: 30),),
-                      ),
-                      FloatingActionButton(
-                      backgroundColor: Colors.grey,                     
-                      onPressed: (){},
-                      child: Text("3",style: TextStyle(fontSize: 30),),
-                      )  
-                  ],                  
-                ), 
-        ),
-                     Row(
-                     mainAxisAlignment: MainAxisAlignment.spaceEvenly, 
-                    children: [
-                    FloatingActionButton(
-                      backgroundColor: Colors.grey,                                          
-                      child: Text("4",style: TextStyle(fontSize: 30),),
-                       onPressed:(){}
-                    ),
-                    FloatingActionButton(                      
-                      backgroundColor: Colors.grey,                     
-                      onPressed: (){},
-                      child: Text("5",style: TextStyle(fontSize: 30),),
-                      ),
-                      FloatingActionButton(
-                      backgroundColor: Colors.grey,                     
-                      onPressed: (){},
-                      child: Text("6",style: TextStyle(fontSize: 30),),
-                      )  
-                  ],               
-                  ),
-                  Row( 
-                   mainAxisAlignment: MainAxisAlignment.spaceEvenly, 
-                    children: [
-                    FloatingActionButton(
-                      backgroundColor: Colors.grey,
-                      onPressed: (){},
-                      child: Text("7",style: TextStyle(fontSize: 30),),
-                    ),
-                    FloatingActionButton(                      
-                      backgroundColor: Colors.grey,                     
-                      onPressed: (){},
-                      child: Text("8",style: TextStyle(fontSize: 30),),
-                      ),
-                      FloatingActionButton(
-                      backgroundColor: Colors.grey,                     
-                      onPressed: (){},
-                      child: Text("9",style: TextStyle(fontSize: 30),),
-                      )  
-                  ],
-                    ),
-                    Row(
-                     mainAxisAlignment: MainAxisAlignment.spaceEvenly, 
-                      children: [
-                      FloatingActionButton(
-                      backgroundColor: Colors.grey,
-                      onPressed: (){},
-                      child: Text("*",style: TextStyle(fontSize: 30),),
-                    ),
-                    FloatingActionButton(                      
-                      backgroundColor: Colors.grey,                     
-                      onPressed: (){},
-                      child: Text("0",style: TextStyle(fontSize: 30),),
-                      ),
-                      FloatingActionButton(
-                      backgroundColor: Colors.grey,                     
-                      onPressed: (){},
-                      child: Text("#",style: TextStyle(fontSize: 30),),
-                      )  
-                  ],
-                    ),      
-                 
-          ],
-        ),
-        
-        ),
-        
-        floatingActionButtonLocation:FloatingActionButtonLocation.miniCenterDocked,
-        floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.phone),        
-          backgroundColor: Colors.red.shade400,           
-          onPressed: (){}
-          
-          ),
-        
-        
-          
-      );
-    
-  }
-  
-
   dynamic contacts() {
     return ListView.builder(
-        itemCount: listItems!.length,
-        itemBuilder: (context, index) {
-          return ListTile(
-            title: Text("Name Surname"),
-            subtitle: Text(listItems![index]),
-            trailing: IconButton(
-              highlightColor: Colors.transparent,
-              hoverColor: Colors.transparent,
-              icon: Icon(Icons.phone),
-              onPressed: () {
-                showDialog(
-                    context: context,
-                    builder: (context) {
-                      return AlertDialog(
-                        title: Text(listItems![index]),
-                      );
-                    });
-              },
-            ),
-            leading: IconButton(
-              highlightColor: Colors.transparent,
-              hoverColor: Colors.transparent,
-              icon: Icon(Icons.person),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => Thirdscreen(
-                      name: 'Name Surname',
-                      number: listItems![index],
-                    ),
+      itemCount: listItems!.length,
+      itemBuilder: (context, index) {
+        return ListTile(
+          title: Text("Name Surname"),
+          subtitle: Text(listItems![index]),
+          trailing: IconButton(
+            highlightColor: Colors.transparent,
+            hoverColor: Colors.transparent,
+            icon: Icon(Icons.phone),
+            onPressed: () {
+              showDialog(
+                context: context,
+                builder: (context) {
+                  return AlertDialog(
+                    title: Text(listItems![index]),
+                  );
+                },
+              );
+            },
+          ),
+          leading: IconButton(
+            highlightColor: Colors.transparent,
+            hoverColor: Colors.transparent,
+            icon: Icon(Icons.person),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => Thirdscreen(
+                    name: 'Name Surname',
+                    number: listItems![index],
                   ),
-                );
-              },
-            ),
-          );
-         
-        });
-        
+                ),
+              );
+            },
+          ),
+        );
+      },
+    );
   }
-
-  
 }
-
-
-

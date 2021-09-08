@@ -1,6 +1,6 @@
 
-import 'package:animation_tuto/screens/iconlar.dart';
-import 'package:animation_tuto/screens/secondscreen.dart';
+import 'package:animation_tuto/screens/icons.dart';
+
 import 'package:flutter/material.dart';
 
 class FirstScreen extends StatefulWidget {
