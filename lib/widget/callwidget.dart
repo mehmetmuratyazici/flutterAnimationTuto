@@ -1,15 +1,21 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 dynamic call() {
   final number = TextEditingController();
   return Scaffold(
+  
     body: Center(
+      
       child: Column(
+        
+        crossAxisAlignment: CrossAxisAlignment.center,      
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
+        
           TextField(
-            
+            readOnly: true,
             controller: number,
             decoration: new InputDecoration(
                 suffixIcon: IconButton(
@@ -27,11 +33,15 @@ dynamic call() {
             ],
           ),
           Padding(
-            padding: EdgeInsets.all(0),
+            padding: EdgeInsets.only(),
+            
             child: Row(
+              
+          
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 FloatingActionButton(
+                  
                   backgroundColor: Colors.grey,
                   child: Text(
                     "1",
@@ -64,7 +74,13 @@ dynamic call() {
               ],
             ),
           ),
+          Container(
+            alignment: Alignment.center,
+            margin: EdgeInsets.only(bottom: 1,top: 0,right: 50),
+
+          ),
           Row(
+            
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               FloatingActionButton(
@@ -97,6 +113,11 @@ dynamic call() {
                 ),
               )
             ],
+          ),
+          Container(
+            alignment: Alignment.center,
+            margin: EdgeInsets.only(bottom: 0,top: 0),
+
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -133,6 +154,11 @@ dynamic call() {
               )
             ],
           ),
+          Container(
+            alignment: Alignment.center,
+            margin: EdgeInsets.only(top: 0),
+
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -168,6 +194,8 @@ dynamic call() {
               )
             ],
           ),
+          Container(alignment: Alignment.center,
+            margin: EdgeInsets.only(top: 30,bottom:30),)
         ],
       ),
     ),
