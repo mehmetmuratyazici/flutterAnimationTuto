@@ -1,9 +1,11 @@
-import 'dart:ffi';
+
+import 'dart:html';
 import 'dart:math';
 
 import 'package:animation_tuto/screens/thirdscreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
 
 
 
@@ -30,11 +32,14 @@ class _SecondscreenState extends State<Secondscreen> {
   }
 
   String getRandNumber(Random rn, num width) {
+    
     String result = rn.nextInt(pow(10, width).toInt()).toString();
     return result.length < width ? result.padLeft(1, "0") : result;
   }
 
   void showMessage() {}
+  
+  final number = TextEditingController();
   int _selectedIndex = 0;
 
   @override
@@ -69,6 +74,7 @@ class _SecondscreenState extends State<Secondscreen> {
         size: 150,
       ),
     ];
+    
 
     final navbar = BottomNavigationBar(
         currentIndex: _selectedIndex, //New
@@ -128,33 +134,50 @@ class _SecondscreenState extends State<Secondscreen> {
 
   
   dynamic call(){
+   
     return Scaffold(
       body: Center(        
         child:
         Column(
           
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          
+        
           children: [   
-            Container(
-              padding: EdgeInsets.only(bottom: 20.0,left: 20.0,right:20.0,top:20.0),
-              child:TextField (        
-                 decoration:
-                 InputDecoration(hintText: ""),             
-                 )
-                 
-            ),
+            
+            
+             TextField(
+               controller: number,
+            
+            decoration: new InputDecoration(labelText: "",),
+            
+            keyboardType: TextInputType.number,
+            inputFormatters: <TextInputFormatter>[
+            FilteringTextInputFormatter.digitsOnly
+           ], 
+          ),
             Padding(
-              padding: EdgeInsets.only(),
+              padding: EdgeInsets.all(0),
+               
              
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [  
+                  
+                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,                  
+                   children: [  
                                               
                     FloatingActionButton(                     
-                      backgroundColor: Colors.grey,                      
-                      onPressed: (){},
+                      backgroundColor: Colors.grey,                                            
                       child: Text("1"),
+                      onPressed: (){
+                       
+  }, 
+                     
+               
+                                         
+                      
                     ),
-                    FloatingActionButton(                      
+                    
+                    FloatingActionButton(                     
                       backgroundColor: Colors.grey,                     
                       onPressed: (){},
                       child: Text("2"),
@@ -168,7 +191,7 @@ class _SecondscreenState extends State<Secondscreen> {
                 ), 
         ),
                      Row(
-                     mainAxisAlignment: MainAxisAlignment.center,
+                     mainAxisAlignment: MainAxisAlignment.spaceEvenly, 
                     children: [
                     FloatingActionButton(
                       backgroundColor: Colors.grey,
@@ -188,7 +211,7 @@ class _SecondscreenState extends State<Secondscreen> {
                   ],               
                   ),
                   Row( 
-                    mainAxisAlignment: MainAxisAlignment.center,
+                   mainAxisAlignment: MainAxisAlignment.spaceEvenly, 
                     children: [
                     FloatingActionButton(
                       backgroundColor: Colors.grey,
@@ -208,7 +231,7 @@ class _SecondscreenState extends State<Secondscreen> {
                   ],
                     ),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                     mainAxisAlignment: MainAxisAlignment.spaceEvenly, 
                       children: [
                       FloatingActionButton(
                       backgroundColor: Colors.grey,
@@ -232,7 +255,7 @@ class _SecondscreenState extends State<Secondscreen> {
         ),
           
         ),
-        floatingActionButtonLocation:FloatingActionButtonLocation.centerFloat ,
+        floatingActionButtonLocation:FloatingActionButtonLocation.miniCenterDocked,
         floatingActionButton: FloatingActionButton(
           child: Icon(Icons.phone),        
           backgroundColor: Colors.red.shade400,           
