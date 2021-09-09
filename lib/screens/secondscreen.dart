@@ -1,8 +1,7 @@
-
 import 'dart:math';
 import 'package:animation_tuto/screens/Icons.dart';
 import 'package:animation_tuto/screens/thirdscreen.dart';
-import 'package:animation_tuto/widget/callwidget.dart';
+import 'package:animation_tuto/widget/keypadofcall.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -56,7 +55,7 @@ class _SecondscreenState extends State<Secondscreen> {
         Icons.people,
         size: 150,
       ),
-      call(),
+      keypad(context),
       Icon(
         Icons.keyboard,
         size: 150,
