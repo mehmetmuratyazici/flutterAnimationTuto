@@ -7,11 +7,10 @@ dynamic call() {
   return Scaffold(
   
     body: Center(
+  
       
       child: Column(
-        
-        crossAxisAlignment: CrossAxisAlignment.center,      
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                         
         children: [
         
           TextField(
@@ -32,24 +31,27 @@ dynamic call() {
               FilteringTextInputFormatter.digitsOnly
             ],
           ),
+        
           Padding(
-            padding: EdgeInsets.only(),
+            padding: EdgeInsets.only(top:80),
             
-            child: Row(
-              
-          
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                FloatingActionButton(
-                  
+            child: Wrap(
+              alignment:WrapAlignment.center,
+              spacing:10,
+            
+             
+              children: [                                       
+                FloatingActionButton(                  
                   backgroundColor: Colors.grey,
                   child: Text(
-                    "1",
+                    "1",                    
                     style: TextStyle(fontSize: 30),
+                    
                   ),
                   onPressed: () {
                     number.text = number.text + '1';
                   },
+                  
                 ),
                 FloatingActionButton(
                   backgroundColor: Colors.grey,
@@ -76,12 +78,15 @@ dynamic call() {
           ),
           Container(
             alignment: Alignment.center,
-            margin: EdgeInsets.only(bottom: 1,top: 0,right: 50),
+            margin: EdgeInsets.only(bottom:10, ),
 
           ),
-          Row(
+          
+          Wrap(
+            alignment:WrapAlignment.center,
+              spacing:10,
             
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+           
             children: [
               FloatingActionButton(
                   backgroundColor: Colors.grey,
@@ -116,11 +121,12 @@ dynamic call() {
           ),
           Container(
             alignment: Alignment.center,
-            margin: EdgeInsets.only(bottom: 0,top: 0),
+            margin: EdgeInsets.only(bottom: 10,),
 
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          Wrap(
+           alignment:WrapAlignment.center,
+              spacing:10,
             children: [
               FloatingActionButton(
                 backgroundColor: Colors.grey,
@@ -156,11 +162,12 @@ dynamic call() {
           ),
           Container(
             alignment: Alignment.center,
-            margin: EdgeInsets.only(top: 0),
+            margin: EdgeInsets.only(bottom:10,),
 
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          Wrap(
+            alignment:WrapAlignment.center,
+              spacing:10,
             children: [
               FloatingActionButton(
                 backgroundColor: Colors.grey,
@@ -194,12 +201,11 @@ dynamic call() {
               )
             ],
           ),
-          Container(alignment: Alignment.center,
-            margin: EdgeInsets.only(top: 30,bottom:30),)
+          
         ],
       ),
     ),
-    floatingActionButtonLocation: FloatingActionButtonLocation.miniCenterDocked,
+    floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     
     floatingActionButton: FloatingActionButton(
         child: Icon(Icons.phone),
