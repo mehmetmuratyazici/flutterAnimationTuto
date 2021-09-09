@@ -123,14 +123,17 @@ dynamic getKeypad(BuildContext context) {
                       child: SizedBox(
                         width: MediaQuery.of(context).size.width * .05 + 30,
                         height: MediaQuery.of(context).size.width * .05 + 30,
-                        child: Visibility(
-                            visible: cntNumberField.text.length > 0,
+                        
                             child: IconButton(
                               icon: Icon(Icons.backspace),
-                              onPressed: () {},
+                              onPressed: () {
+                               if(cntNumberField.text!=null && cntNumberField.text.length>0){
+                                 cntNumberField.text=cntNumberField.text.substring(0,cntNumberField.text.length-1);
+                               }
+                              },
                             )),
                       ),
-                    ),
+                    
                   ],
                 ),
               ],
