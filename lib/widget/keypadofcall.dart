@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/material.dart';
 
-dynamic createBtn(
-    String btnVal, TextEditingController cntNumberField, BuildContext context) {
+dynamic createBtn(String btnVal, TextEditingController _cntNumberField,
+    BuildContext context) {
   return Padding(
     padding: EdgeInsets.all(5),
     child: SizedBox(
         width: MediaQuery.of(context).size.width * .05 + 30,
         height: MediaQuery.of(context).size.width * .05 + 30,
         child: FloatingActionButton(
+          heroTag: "btn" + btnVal,
           backgroundColor: Colors.grey.shade700,
           child: Text(
             btnVal,
@@ -19,13 +19,13 @@ dynamic createBtn(
             ),
           ),
           onPressed: () {
-            cntNumberField.text += btnVal;
+            _cntNumberField.text += btnVal;
           },
         )),
   );
 }
 
-Scaffold keypad(BuildContext context) {
+dynamic getKeypad(BuildContext context) {
   int textLength = 0;
   final cntNumberField = TextEditingController();
   final gblWidth = MediaQuery.of(context).size.width * .9;

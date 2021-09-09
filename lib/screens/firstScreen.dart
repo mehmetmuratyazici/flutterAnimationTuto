@@ -1,4 +1,3 @@
-
 import 'package:animation_tuto/screens/icons.dart';
 
 import 'package:flutter/material.dart';
@@ -81,26 +80,7 @@ class _FirstScreenState extends State<FirstScreen> {
                                       Navigator.of(context).push(
                                           MaterialPageRoute(
                                               builder: (context) =>
-                                              Iconsscreen()));
-                                      return;
-                                      showDialog(
-                                          context: context,
-                                          builder: (context) {
-                                            return AlertDialog(
-                                              title: Text("Uyarı"),
-                                              content: Center(
-                                                child:
-                                                    Text("To be Countinue ..."),
-                                              ),
-                                              actions: [
-                                                TextButton(
-                                                    onPressed: () {
-                                                      Navigator.pop(context);
-                                                    },
-                                                    child: Text("Ok"))
-                                              ],
-                                            );
-                                          });
+                                                  Iconsscreen()));
                                     }),
                               ),
                             )
