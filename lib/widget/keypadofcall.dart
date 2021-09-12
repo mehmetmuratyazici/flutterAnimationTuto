@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+bool _visible=false;
+
 dynamic createBtn(String btnVal, TextEditingController _cntNumberField,
     BuildContext context) {
   return Padding(
@@ -18,9 +20,13 @@ dynamic createBtn(String btnVal, TextEditingController _cntNumberField,
               color: Colors.white,
             ),
           ),
-          onPressed: () {
+          onPressed: ()
+           {  
+             _visible=!_visible;     
             _cntNumberField.text += btnVal;
+            
           },
+          
         )),
   );
 }
@@ -64,10 +70,13 @@ dynamic getKeypad(BuildContext context) {
               children: [
                 Column(
                   children: [
+                   
                     createBtn("1", cntNumberField, context),
                     createBtn("4", cntNumberField, context),
                     createBtn("7", cntNumberField, context),
                     createBtn("*", cntNumberField, context),
+                   
+                  
                     Padding(
                       //bunu yapmak hiç istemezdim ama columun un anlmasız bir bug ı var
                       padding: EdgeInsets.all(10),
@@ -123,17 +132,20 @@ dynamic getKeypad(BuildContext context) {
                       child: SizedBox(
                         width: MediaQuery.of(context).size.width * .05 + 30,
                         height: MediaQuery.of(context).size.width * .05 + 30,
-                        
+                        child: Visibility(
+                         
+                            visible:_visible,
+                                                       
                             child: IconButton(
                               icon: Icon(Icons.backspace),
-                              onPressed: () {
+                              onPressed: () {                                                             
                                if(cntNumberField.text!=null && cntNumberField.text.length>0){
                                  cntNumberField.text=cntNumberField.text.substring(0,cntNumberField.text.length-1);
                                }
                               },
                             )),
                       ),
-                    
+                    ),
                   ],
                 ),
               ],
