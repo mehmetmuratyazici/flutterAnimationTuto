@@ -22,7 +22,7 @@ dynamic createBtn(String btnVal, TextEditingController _cntNumberField,
           ),
           onPressed: ()
            {  
-             _visible=!_visible;     
+             
             _cntNumberField.text += btnVal;
             
           },
@@ -31,9 +31,9 @@ dynamic createBtn(String btnVal, TextEditingController _cntNumberField,
   );
 }
 
-dynamic getKeypad(BuildContext context) {
-  int textLength = 0;
-  final cntNumberField = TextEditingController();
+dynamic getKeypad(BuildContext context, TextEditingController cntNumberField) {
+ 
+  
   final gblWidth = MediaQuery.of(context).size.width * .9;
   return Scaffold(
     body: Center(
@@ -67,15 +67,13 @@ dynamic getKeypad(BuildContext context) {
             width: gblWidth,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [
+              children: [                
                 Column(
-                  children: [
-                   
+                  children: [                   
                     createBtn("1", cntNumberField, context),
                     createBtn("4", cntNumberField, context),
                     createBtn("7", cntNumberField, context),
                     createBtn("*", cntNumberField, context),
-                   
                   
                     Padding(
                       //bunu yapmak hiç istemezdim ama columun un anlmasız bir bug ı var

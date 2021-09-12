@@ -32,6 +32,7 @@ class _SecondscreenState extends State<Secondscreen> {
   }
 
   void showMessage() {}
+  final cntNumberField = TextEditingController();
 
   int _selectedIndex = 0;
 
@@ -55,7 +56,7 @@ class _SecondscreenState extends State<Secondscreen> {
         Icons.people,
         size: 150,
       ),
-      getKeypad(context),
+      getKeypad(context,cntNumberField),
       Icon(
         Icons.keyboard,
         size: 150,
