@@ -1,40 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-bool _visible=false;
+class GetKeyPad extends StatefulWidget {
+  final TextEditingController cntNumberField;
+  const GetKeyPad({ Key? key,required this.cntNumberField, }) : super(key: key);
 
-dynamic createBtn(String btnVal, TextEditingController _cntNumberField,
-    BuildContext context) {
-  return Padding(
-    padding: EdgeInsets.all(5),
-    child: SizedBox(
-        width: MediaQuery.of(context).size.width * .05 + 30,
-        height: MediaQuery.of(context).size.width * .05 + 30,
-        child: FloatingActionButton(
-          heroTag: "btn" + btnVal,
-          backgroundColor: Colors.grey.shade700,
-          child: Text(
-            btnVal,
-            style: TextStyle(
-              fontSize: MediaQuery.of(context).size.width * .005 + 25,
-              color: Colors.white,
-            ),
-          ),
-          onPressed: ()
-           {  
-             
-            _cntNumberField.text += btnVal;
-            
-          },
-          
-        )),
-  );
+  @override
+  _GetKeyPadState createState() => _GetKeyPadState();
 }
 
-dynamic getKeypad(BuildContext context, TextEditingController cntNumberField) {
- 
+class _GetKeyPadState extends State<GetKeyPad> {
+  bool _visible=false;
   
-  final gblWidth = MediaQuery.of(context).size.width * .9;
+  @override
+  Widget build(BuildContext context) {
+    final gblWidth = MediaQuery.of(context).size.width * .9;
   return Scaffold(
     body: Center(
       child: Column(
@@ -52,7 +32,7 @@ dynamic getKeypad(BuildContext context, TextEditingController cntNumberField) {
                   fontSize: 30,
                 ),
                 showCursor: false,
-                controller: cntNumberField,
+                controller: this.widget.cntNumberField,
                 inputFormatters: [
                   FilteringTextInputFormatter.digitsOnly,
                 ],
@@ -70,10 +50,10 @@ dynamic getKeypad(BuildContext context, TextEditingController cntNumberField) {
               children: [                
                 Column(
                   children: [                   
-                    createBtn("1", cntNumberField, context),
-                    createBtn("4", cntNumberField, context),
-                    createBtn("7", cntNumberField, context),
-                    createBtn("*", cntNumberField, context),
+                    createBtn("1", this.widget.cntNumberField, context),
+                    createBtn("4", this.widget.cntNumberField, context),
+                    createBtn("7", this.widget.cntNumberField, context),
+                    createBtn("*", this.widget.cntNumberField, context),
                   
                     Padding(
                       //bunu yapmak hiç istemezdim ama columun un anlmasız bir bug ı var
@@ -94,10 +74,10 @@ dynamic getKeypad(BuildContext context, TextEditingController cntNumberField) {
                 ),
                 Column(
                   children: [
-                    createBtn("2", cntNumberField, context),
-                    createBtn("5", cntNumberField, context),
-                    createBtn("8", cntNumberField, context),
-                    createBtn("0", cntNumberField, context),
+                    createBtn("2", this.widget.cntNumberField, context),
+                    createBtn("5", this.widget.cntNumberField, context),
+                    createBtn("8", this.widget.cntNumberField, context),
+                    createBtn("0", this.widget.cntNumberField, context),
                     Padding(
                       padding: EdgeInsets.all(10),
                       child: SizedBox(
@@ -111,7 +91,7 @@ dynamic getKeypad(BuildContext context, TextEditingController cntNumberField) {
                                   context: context,
                                   builder: (context) {
                                     return AlertDialog(
-                                      content: Text(cntNumberField.text),
+                                      content: Text(this.widget.cntNumberField.text),
                                     );
                                   });
                             },
@@ -121,10 +101,10 @@ dynamic getKeypad(BuildContext context, TextEditingController cntNumberField) {
                 ),
                 Column(
                   children: [
-                    createBtn("3", cntNumberField, context),
-                    createBtn("6", cntNumberField, context),
-                    createBtn("9", cntNumberField, context),
-                    createBtn("#", cntNumberField, context),
+                    createBtn("3", this.widget.cntNumberField, context),
+                    createBtn("6", this.widget.cntNumberField, context),
+                    createBtn("9", this.widget.cntNumberField, context),
+                    createBtn("#", this.widget.cntNumberField, context),
                     Padding(
                       padding: EdgeInsets.all(10),
                       child: SizedBox(
@@ -137,10 +117,12 @@ dynamic getKeypad(BuildContext context, TextEditingController cntNumberField) {
                             child: IconButton(
                               icon: Icon(Icons.backspace),
                               onPressed: () {                                                             
-                               if(cntNumberField.text!=null && cntNumberField.text.length>0){
-                                 cntNumberField.text=cntNumberField.text.substring(0,cntNumberField.text.length-1);
+                               if(this.widget.cntNumberField.text!=null && this.widget.cntNumberField.text.length>0){
+                                 this.widget.cntNumberField.text=this.widget.cntNumberField.text.substring(0,this.widget.cntNumberField.text.length-1);
+                              
+                                  }
                                }
-                              },
+                              
                             )),
                       ),
                     ),
@@ -153,4 +135,38 @@ dynamic getKeypad(BuildContext context, TextEditingController cntNumberField) {
       ),
     ),
   );
+}
+
+        
+ createBtn(String btnVal, TextEditingController _cntNumberField,
+    BuildContext context) {
+  return Padding(
+    padding: EdgeInsets.all(5),
+    child: SizedBox(
+        width: MediaQuery.of(context).size.width * .05 + 30,
+        height: MediaQuery.of(context).size.width * .05 + 30,
+        child: FloatingActionButton(
+          heroTag: "btn" + btnVal,
+          backgroundColor: Colors.grey.shade700,
+          child: Text(
+            btnVal,
+            style: TextStyle(
+              fontSize: MediaQuery.of(context).size.width * .005 + 25,
+              color: Colors.white,
+            ),
+          ),
+          onPressed: ()
+           {  
+              if (_cntNumberField.text == "") {
+              setState(() {
+                _visible = true;
+              });
+            }
+            _cntNumberField.text += btnVal;
+            
+          },
+        
+        )),
+  );
+}
 }
