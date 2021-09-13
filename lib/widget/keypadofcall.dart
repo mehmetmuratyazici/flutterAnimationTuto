@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -11,6 +13,7 @@ class GetKeyPad extends StatefulWidget {
 
 class _GetKeyPadState extends State<GetKeyPad> {
   bool _visible=false;
+ 
   
   @override
   Widget build(BuildContext context) {
@@ -119,10 +122,13 @@ class _GetKeyPadState extends State<GetKeyPad> {
                               onPressed: () {                                                             
                                if(this.widget.cntNumberField.text!=null && this.widget.cntNumberField.text.length>0){
                                  this.widget.cntNumberField.text=this.widget.cntNumberField.text.substring(0,this.widget.cntNumberField.text.length-1);
-                              
+                                 if (this.widget.cntNumberField.text == '') {
+                                    setState(() {
+                                      _visible = false;
+                                    });
                                   }
                                }
-                              
+                              },
                             )),
                       ),
                     ),
