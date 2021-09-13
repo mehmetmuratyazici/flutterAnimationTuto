@@ -4,6 +4,7 @@ import 'package:animation_tuto/screens/thirdscreen.dart';
 import 'package:animation_tuto/widget/keypadofcall.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Secondscreen extends StatefulWidget {
   const Secondscreen({Key? key}) : super(key: key);
@@ -32,13 +33,22 @@ class _SecondscreenState extends State<Secondscreen> {
   }
 
   void showMessage() {}
-  final cntNumberField = TextEditingController();
-  
-
   int _selectedIndex = 0;
+
+  void saveValueLocalStorage(key, val) async {
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setString(key, val);
+  }
+
+  void getValueLocalStorage(key) async {
+    final prefs = await SharedPreferences.getInstance();
+    print(prefs.getString(key));
+  }
 
   @override
   Widget build(BuildContext context) {
+    //saveValueLocalStorage("entry", "Merhaba çanım");
+    //getValueLocalStorage("entry");
     setPhoneList();
     void _onItemTapped(int index) {
       setState(() {
@@ -48,23 +58,31 @@ class _SecondscreenState extends State<Secondscreen> {
     }
 
     List<Widget> _pages = <Widget>[
-      Icon(
-        Icons.star_outlined,
-        size: 150,
+      Center(
+        child: Icon(
+          Icons.star_outlined,
+          size: 150,
+        ),
       ),
       contacts(),
-      Icon(
-        Icons.people,
-        size: 150,
+      Center(
+        child: Icon(
+          Icons.people,
+          size: 150,
+        ),
       ),
-      GetKeyPad(cntNumberField: cntNumberField),
-      Icon(
-        Icons.keyboard,
-        size: 150,
+      GetKeyPad(),
+      Center(
+        child: Icon(
+          Icons.keyboard,
+          size: 150,
+        ),
       ),
-      Icon(
-        Icons.voicemail_outlined,
-        size: 150,
+      Center(
+        child: Icon(
+          Icons.voicemail_outlined,
+          size: 150,
+        ),
       ),
     ];
 
@@ -116,8 +134,9 @@ class _SecondscreenState extends State<Secondscreen> {
         title: Text("Recents"),
       ),
       bottomNavigationBar: navbar,
-      body: Center(
-        child: _pages[_selectedIndex],
+      body: IndexedStack(
+        index: _selectedIndex,
+        children: _pages,
       ),
     );
   }
