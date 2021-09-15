@@ -1,4 +1,3 @@
-
 import 'package:animation_tuto/widget/people.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -41,7 +40,6 @@ class _FourthscreenState extends State<Fourthscreen> {
     prefs.getStringList("name");
     prefs.getStringList("surname");
     prefs.getStringList("number");
-    
   }
 
   getPhone() async {
@@ -104,6 +102,8 @@ class _FourthscreenState extends State<Fourthscreen> {
                       surnamecontroller.text,
                       numbercontroller.text,
                     );
+                    refreshScreen();
+
                     Navigator.pop(context);
                   },
                 ),

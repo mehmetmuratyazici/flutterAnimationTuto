@@ -14,8 +14,17 @@ void changeScreen(BuildContext _context, Widget _widget) {
   Navigator.push(_context, MaterialPageRoute(builder: (_context) => _widget));
 }
 
+void refreshScreen() async {
+  //await _PeopleState()._formKey.currentState.widget.createState();
+}
+
 class _PeopleState extends State<People> {
-  void callbacks() {}
+  void callbacks() {
+    print("callbacks");
+  }
+
+  final _formKey = GlobalKey<FormState>();
+
   List<String> nameList = <String>[];
   List<String> surnameList = <String>[];
   List<String> numberList = <String>[];
@@ -28,13 +37,16 @@ class _PeopleState extends State<People> {
 
   getData() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
+    if (prefs.getString("mmy") == null) {
+      prefs.setString("mmy", "Muratçım");
+    } else
+      print("-------------" + prefs.getString("mmy")!);
+
     if (prefs.getStringList("nameList") != null) {
       setState(() {
         nameList = (prefs.getStringList("nameList"))!;
         surnameList = (prefs.getStringList("surnameList"))!;
         numberList = (prefs.getStringList("numberList"))!;
-        
-      
       });
     }
   }
@@ -52,10 +64,8 @@ class _PeopleState extends State<People> {
                   padding: const EdgeInsets.all(8.0),
                   child: ListTile(
                     tileColor: Colors.grey.shade800,
-                    leading: IconButton(
-                    onPressed: (){}, 
-                      icon: Icon(Icons.person)),
-                                       
+                    leading:
+                        IconButton(onPressed: () {}, icon: Icon(Icons.person)),
                     subtitle: Text(numberList[index]),
                     title: Text(
                       nameList[index] + " " + surnameList[index],
