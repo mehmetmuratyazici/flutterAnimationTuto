@@ -1,5 +1,4 @@
 import 'package:animation_tuto/screens/fourthscreen.dart';
-import 'package:animation_tuto/widget/favorites.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -54,15 +53,7 @@ class _PeopleState extends State<People> {
                   child: ListTile(
                     tileColor: Colors.grey.shade800,
                     leading: IconButton(
-                    onPressed: (){
-                     Navigator.push(
-                     context,
-                     MaterialPageRoute(
-                     builder: (context) => Favorites(),
-                ),
-              );
-
-                      }, 
+                    onPressed: (){}, 
                       icon: Icon(Icons.person)),
                                        
                     subtitle: Text(numberList[index]),
