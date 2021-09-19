@@ -1,10 +1,8 @@
 import 'dart:math';
-import 'package:animation_tuto/screens/Icons.dart';
 import 'package:animation_tuto/screens/thirdscreen.dart';
 import 'package:animation_tuto/widget/keypadofcall.dart';
 import 'package:animation_tuto/widget/people.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Secondscreen extends StatefulWidget {
@@ -59,16 +57,14 @@ class _SecondscreenState extends State<Secondscreen> {
     }
 
     List<Widget> _pages = <Widget>[
-      
       Center(
         child: Icon(
           Icons.star_outlined,
           size: 150,
         ),
-      ),      
-      contacts(),   
-      People(), 
-     
+      ),
+      contacts(),
+      People(),
       GetKeyPad(),
       Center(
         child: Icon(
@@ -76,7 +72,6 @@ class _SecondscreenState extends State<Secondscreen> {
           size: 150,
         ),
       ),
-      
       Center(
         child: Icon(
           Icons.voicemail_outlined,

@@ -1,5 +1,4 @@
-import 'package:animation_tuto/screens/icons.dart';
-
+import 'package:animation_tuto/screens/Icons.dart';
 import 'package:flutter/material.dart';
 
 class FirstScreen extends StatefulWidget {
@@ -73,8 +72,11 @@ class _FirstScreenState extends State<FirstScreen> {
                               child: SizedBox(
                                 width: 120,
                                 height: 50,
-                                child: RaisedButton(
-                                    color: Colors.red,
+                                child: ElevatedButton(
+                                    style: ButtonStyle(
+                                      backgroundColor:
+                                          MaterialStateProperty.all(Colors.red),
+                                    ),
                                     child: Text("Login"),
                                     onPressed: () {
                                       Navigator.of(context).push(
