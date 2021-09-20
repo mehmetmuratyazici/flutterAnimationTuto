@@ -35,33 +35,31 @@ class _PeopleState extends State<People> {
         children: [
           Expanded(
             child: ListView.builder(
-              itemCount: peopleProvider.nameList.length,
+              itemCount: peopleProvider.nameList!.length,
               itemBuilder: (BuildContext context, int index) {
                 return Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: ListTile(
                     tileColor: Colors.grey.shade800,
-                    leading:
-                        IconButton(
-                          onPressed: () {
-                                Navigator.push(
-                                  context,
-                                 MaterialPageRoute(
-                                  builder: (context) => Favorites(
-                                    nameList:  peopleProvider.nameList[index],
-                                     surnameList:peopleProvider.surnameList[index], 
-                                     numberList: peopleProvider.numberList[index],
-                                
+                    leading: IconButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Favorites(
+                                nameList: peopleProvider.nameList![index],
+                                surnameList: peopleProvider.surnameList![index],
+                                numberList: peopleProvider.numberList![index],
+                              ),
                             ),
-                            ),
-                         );
-                     },
-                   icon: Icon(Icons.person)),
-                    subtitle: Text(peopleProvider.numberList[index]),
+                          );
+                        },
+                        icon: Icon(Icons.person)),
+                    subtitle: Text(peopleProvider.numberList![index]),
                     title: Text(
-                      peopleProvider.nameList[index] +
+                      peopleProvider.nameList![index] +
                           " " +
-                          peopleProvider.surnameList[index],
+                          peopleProvider.surnameList![index],
                     ),
                   ),
                 );
