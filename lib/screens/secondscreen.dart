@@ -1,4 +1,6 @@
 import 'dart:math';
+import 'package:animation_tuto/provider/people_provider.dart';
+import 'package:animation_tuto/screens/favoritesScreen.dart';
 import 'package:animation_tuto/screens/thirdscreen.dart';
 import 'package:animation_tuto/widget/keypadofcall.dart';
 import 'package:animation_tuto/widget/people.dart';
@@ -6,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Secondscreen extends StatefulWidget {
-  const Secondscreen({Key? key}) : super(key: key);
+  const Secondscreen( {Key? key, nameList, surnameList, numberList}) : super(key: key);
 
   @override
   _SecondscreenState createState() => _SecondscreenState();
@@ -55,14 +57,9 @@ class _SecondscreenState extends State<Secondscreen> {
         print(index);
       });
     }
-
+    
     List<Widget> _pages = <Widget>[
-      Center(
-        child: Icon(
-          Icons.star_outlined,
-          size: 150,
-        ),
-      ),
+      FavoritesScreen(),
       contacts(),
       People(),
       GetKeyPad(),

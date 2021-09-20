@@ -6,6 +6,18 @@ class PeopleProvider with ChangeNotifier {
   List<String>? surnameList = <String>[];
   List<String>? numberList = <String>[];
 
+  List<String>? favNameList = <String>[];
+  List<String>? favSurnameList = <String>[];
+  List<String>? favNumberList = <String>[];
+
+  addFavorite(int index ){
+    favNameList!.add(nameList![index]);
+    favSurnameList!.add(surnameList![index]);
+    favNumberList!.add(numberList![index]);
+    notifyListeners();
+  }
+  removeFavorite(int index){}
+
   setListuserData(String name, String surname, String number) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
@@ -23,7 +35,7 @@ class PeopleProvider with ChangeNotifier {
     await prefs.setStringList("numberList", numberList!);
   }
 
-  getContact() async {
+   getContact() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     nameList = (prefs.getStringList("nameList") != null
         ? prefs.getStringList("nameList")

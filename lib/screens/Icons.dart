@@ -1,4 +1,5 @@
 import 'package:animation_tuto/screens/secondscreen.dart';
+import 'package:animation_tuto/widget/people.dart';
 import 'package:flutter/material.dart';
 
 class Iconsscreen extends StatefulWidget {
@@ -13,6 +14,7 @@ void changeScreen(BuildContext _context, Widget _widget) {
 }
 
 class _IconsscreenState extends State<Iconsscreen> {
+ 
   @override
   Widget build(BuildContext context) {
     return Scaffold(

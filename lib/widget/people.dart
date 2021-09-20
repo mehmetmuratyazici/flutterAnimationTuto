@@ -50,6 +50,7 @@ class _PeopleState extends State<People> {
                                 nameList: peopleProvider.nameList![index],
                                 surnameList: peopleProvider.surnameList![index],
                                 numberList: peopleProvider.numberList![index],
+                                index:index
                               ),
                             ),
                           );
