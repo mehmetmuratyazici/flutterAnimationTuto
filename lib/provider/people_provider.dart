@@ -10,13 +10,28 @@ class PeopleProvider with ChangeNotifier {
   List<String>? favSurnameList = <String>[];
   List<String>? favNumberList = <String>[];
 
-  addFavorite(int index ){
+  bool checkIsFav(index) {
+    for (final contact in favNameList!) {
+      if (contact == nameList![index]) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  addFavorite(int index) {
     favNameList!.add(nameList![index]);
     favSurnameList!.add(surnameList![index]);
     favNumberList!.add(numberList![index]);
     notifyListeners();
   }
-  removeFavorite(int index){}
+
+  removeFavorite(int index) {
+    favNameList!.removeWhere((element) => element == nameList![index]);
+    favSurnameList!.removeWhere((element) => element == surnameList![index]);
+    favNumberList!.removeWhere((element) => element == numberList![index]);
+    notifyListeners();
+  }
 
   setListuserData(String name, String surname, String number) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -35,7 +50,7 @@ class PeopleProvider with ChangeNotifier {
     await prefs.setStringList("numberList", numberList!);
   }
 
-   getContact() async {
+  getContact() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     nameList = (prefs.getStringList("nameList") != null
         ? prefs.getStringList("nameList")

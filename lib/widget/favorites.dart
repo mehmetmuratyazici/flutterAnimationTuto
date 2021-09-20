@@ -12,7 +12,13 @@ class Favorites extends StatefulWidget {
   final String numberList;
   final int index;
 
-  const Favorites({ Key? key, required this.nameList, required this.surnameList, required this.numberList, required this.index  }) : super(key: key);
+  const Favorites(
+      {Key? key,
+      required this.nameList,
+      required this.surnameList,
+      required this.numberList,
+      required this.index})
+      : super(key: key);
 
   @override
   _FavoritesState createState() => _FavoritesState();
@@ -24,42 +30,39 @@ class _FavoritesState extends State<Favorites> {
   @override
   Widget build(BuildContext context) {
     final fav = Provider.of<PeopleProvider>(context);
- 
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.red.shade400,
         centerTitle: true,
       ),
-      
-      body: Center(        
-        child: Column(                                  
-          children: [  
+      body: Center(
+        child: Column(
+          children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              IconButton(
-                onPressed: (){
-                  fav.addFavorite(widget.index);
-
-                  
-            //  Navigator.push(
-            //                 context,
-            //                 MaterialPageRoute(
-            //                   builder: (context) => Secondscreen(
-                                 
-            //                   ),
-                               
-            //                   )
-                              
-            //                 );                       
-                },
-                 icon: Icon(Icons.star_outlined))
-
-            ],
-                                       
+              children: [
+                IconButton(
+                    onPressed: () {
+                      fav.addFavorite(widget.index);
+                    },
+                    icon: IconButton(
+                      icon: fav.checkIsFav(widget.index)
+                          ? Icon(Icons.remove)
+                          : Icon(Icons.favorite),
+                      onPressed: () {
+                        if (!fav.checkIsFav(widget.index)) {
+                          fav.addFavorite(widget.index);
+                        } else {
+                          fav.removeFavorite(widget.index);
+                        }
+                      },
+                    ))
+              ],
             ),
-                             
-            Padding(padding: EdgeInsets.symmetric(vertical: 90),),          
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: 90),
+            ),
             Text(
               widget.nameList,
               style: TextStyle(fontSize: 30),
@@ -72,30 +75,16 @@ class _FavoritesState extends State<Favorites> {
               widget.numberList,
               style: TextStyle(fontSize: 20),
             ),
-           
-          Row(
-             mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              IconButton(
-                onPressed: (){},
-                icon: Icon(Icons.call)
-                ),
-              IconButton(
-                onPressed: (){},
-                 icon: Icon(Icons.message_rounded)
-              ),
-              IconButton(
-                onPressed: (){},
-                 icon: Icon(Icons.video_camera_back)
-              ),
-                                        
-              
-            ],
-
-          )
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                IconButton(onPressed: () {}, icon: Icon(Icons.call)),
+                IconButton(onPressed: () {}, icon: Icon(Icons.message_rounded)),
+                IconButton(
+                    onPressed: () {}, icon: Icon(Icons.video_camera_back)),
+              ],
+            )
           ],
-          
-          
         ),
       ),
     );
