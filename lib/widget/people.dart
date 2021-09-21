@@ -62,8 +62,11 @@ class _PeopleState extends State<People> {
                           " " +
                           peopleProvider.surnameList![index],
                     ),
+                                   
                   ),
+
                 );
+
               },
             ),
           ),

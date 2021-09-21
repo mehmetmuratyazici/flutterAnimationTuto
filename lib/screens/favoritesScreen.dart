@@ -24,6 +24,14 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
             hoverColor: Colors.transparent,
             icon: Icon(Icons.phone),
             onPressed: () {
+               showDialog(
+                context: context,
+                builder: (context) {
+                  return AlertDialog(
+                    title: Text(fav.favNumberList![index]),
+                  );
+                },
+              );
               
             },
           ),
