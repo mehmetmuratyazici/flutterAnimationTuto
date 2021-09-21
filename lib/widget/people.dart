@@ -34,9 +34,11 @@ class _PeopleState extends State<People> {
       appBar: AppBar(
           backgroundColor: Colors.red.shade400,
           centerTitle: true,
-          title: Text("Recents"),
+          title: Text("Contacts"),
           actions: [
             IconButton(
+              highlightColor: Colors.transparent,
+              hoverColor: Colors.transparent,
               icon: Icon(Icons.add),
               onPressed: () {
                 changeScreen(context, Fourthscreen());
@@ -67,7 +69,10 @@ class _PeopleState extends State<People> {
                             ),
                           );
                         },
-                        icon: Icon(Icons.person)),
+                        icon: Icon(Icons.person),
+                        highlightColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        ),
                     subtitle: Text(peopleProvider.numberList![index]),
                     title: Text(
                       peopleProvider.nameList![index] +

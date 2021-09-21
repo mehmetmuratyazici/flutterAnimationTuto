@@ -46,6 +46,8 @@ class _FavoritesState extends State<Favorites> {
                   icon: !fav.checkIsFav(widget.index)
                       ? Icon(Icons.star_border_outlined)
                       : Icon(Icons.star),
+                      highlightColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
                   onPressed: () {
                     if (!fav.checkIsFav(widget.index)) {
                       fav.addFavorite(widget.index);
@@ -76,10 +78,21 @@ class _FavoritesState extends State<Favorites> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                IconButton(onPressed: () {}, icon: Icon(Icons.call)),
-                IconButton(onPressed: () {}, icon: Icon(Icons.message_rounded)),
-                IconButton(
-                    onPressed: () {}, icon: Icon(Icons.video_camera_back)),
+                IconButton(onPressed: () {},
+                 icon: Icon(Icons.call),
+                 highlightColor: Colors.transparent,
+                 hoverColor: Colors.transparent,
+                 ),
+                IconButton(onPressed: () {}, 
+                icon: Icon(Icons.message_rounded),
+                highlightColor: Colors.transparent,
+                hoverColor: Colors.transparent,
+                ),
+                IconButton(onPressed: () {}, 
+                icon: Icon(Icons.video_camera_back),
+                highlightColor: Colors.transparent,
+                hoverColor: Colors.transparent,
+                ),
               ],
             )
           ],

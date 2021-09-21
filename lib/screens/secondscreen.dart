@@ -1,7 +1,9 @@
+import 'dart:html';
 import 'dart:math';
 import 'package:animation_tuto/provider/people_provider.dart';
 import 'package:animation_tuto/screens/favoritesScreen.dart';
 import 'package:animation_tuto/screens/thirdscreen.dart';
+import 'package:animation_tuto/screens/voicemailScreen.dart';
 import 'package:animation_tuto/widget/keypadofcall.dart';
 import 'package:animation_tuto/widget/people.dart';
 import 'package:flutter/material.dart';
@@ -66,18 +68,8 @@ class _SecondscreenState extends State<Secondscreen> {
       recents(),
       People(),
       GetKeyPad(),
-      Center(
-        child: Icon(
-          Icons.keyboard,
-          size: 150,
-        ),
-      ),
-      Center(
-        child: Icon(
-          Icons.voicemail_outlined,
-          size: 150,
-        ),
-      ),
+      Voicemail(),
+    
     ];
 
     final navbar = BottomNavigationBar(
@@ -131,7 +123,16 @@ class _SecondscreenState extends State<Secondscreen> {
   }
 
   dynamic recents() {
-    return ListView.builder(
+    return Scaffold(
+      appBar: AppBar(
+          backgroundColor: Colors.red.shade400,
+          centerTitle: true,
+          title: Text("Recents"),
+          actions: []),
+    
+    body:
+
+    ListView.builder(
       itemCount: listItems!.length,
       itemBuilder: (context, index) {
         return ListTile(
@@ -170,6 +171,7 @@ class _SecondscreenState extends State<Secondscreen> {
           ),
         );
       },
+    ),
     );
   }
 }

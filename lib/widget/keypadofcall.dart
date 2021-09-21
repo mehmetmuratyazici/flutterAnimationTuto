@@ -21,6 +21,12 @@ class _GetKeyPadState extends State<GetKeyPad> {
   Widget build(BuildContext context) {
     final gblWidth = MediaQuery.of(context).size.width * .9;
     return Scaffold(
+      appBar:  AppBar(
+          backgroundColor: Colors.red.shade400,
+          centerTitle: true,
+          title: Text("Keypad"),
+          actions: []
+          ),
       body: Center(
         child: Column(
           //crossAxisAlignment: CrossAxisAlignment.center,
