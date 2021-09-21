@@ -27,22 +27,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
               
             },
           ),
-          // leading: IconButton(
-          //   highlightColor: Colors.transparent,
-          //   hoverColor: Colors.transparent,
-          //   icon: Icon(Icons.person),
-          //   onPressed: () {
-          //     Navigator.push(
-          //       context,
-          //       MaterialPageRoute(
-          //         builder: (context) => Thirdscreen(
-          //           name: 'Name Surname',
-          //           number: listItems![index],
-          //         ),
-          //       ),
-          //     );
-          //   },
-          // ),
+        
         );
       },
     );
