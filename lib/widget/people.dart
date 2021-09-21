@@ -31,6 +31,18 @@ class _PeopleState extends State<People> {
   Widget build(BuildContext context) {
     final peopleProvider = Provider.of<PeopleProvider>(context);
     return Scaffold(
+      appBar: AppBar(
+          backgroundColor: Colors.red.shade400,
+          centerTitle: true,
+          title: Text("Recents"),
+          actions: [
+            IconButton(
+              icon: Icon(Icons.add),
+              onPressed: () {
+                changeScreen(context, Fourthscreen());
+              },
+            ),
+          ]),
       body: Column(
         children: [
           Expanded(
@@ -47,11 +59,11 @@ class _PeopleState extends State<People> {
                             context,
                             MaterialPageRoute(
                               builder: (context) => Favorites(
-                                nameList: peopleProvider.nameList![index],
-                                surnameList: peopleProvider.surnameList![index],
-                                numberList: peopleProvider.numberList![index],
-                                index:index
-                              ),
+                                  nameList: peopleProvider.nameList![index],
+                                  surnameList:
+                                      peopleProvider.surnameList![index],
+                                  numberList: peopleProvider.numberList![index],
+                                  index: index),
                             ),
                           );
                         },
@@ -62,20 +74,11 @@ class _PeopleState extends State<People> {
                           " " +
                           peopleProvider.surnameList![index],
                     ),
-                                   
                   ),
-
                 );
-
               },
             ),
           ),
-          IconButton(
-              onPressed: () {
-                changeScreen(context, Fourthscreen());
-              },
-              iconSize: 30,
-              icon: Icon(Icons.add))
         ],
       ),
     );

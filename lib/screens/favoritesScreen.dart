@@ -12,32 +12,38 @@ class FavoritesScreen extends StatefulWidget {
 class _FavoritesScreenState extends State<FavoritesScreen> {
   @override
   Widget build(BuildContext context) {
-    final fav= Provider.of<PeopleProvider>(context);
-    return ListView.builder(
-      itemCount:fav.favNameList!.length,
-      itemBuilder: (context, index) {
-        return ListTile(
-          title: Text(fav.favNameList![index]+' '+fav.favSurnameList![index]),
-          subtitle: Text(fav.favNumberList![index]),
-          trailing: IconButton(
-            highlightColor: Colors.transparent,
-            hoverColor: Colors.transparent,
-            icon: Icon(Icons.phone),
-            onPressed: () {
-               showDialog(
-                context: context,
-                builder: (context) {
-                  return AlertDialog(
-                    title: Text(fav.favNumberList![index]),
-                  );
-                },
-              );
-              
-            },
-          ),
-        
-        );
-      },
+    final fav = Provider.of<PeopleProvider>(context);
+    return Scaffold(
+      appBar: AppBar(
+          backgroundColor: Colors.red.shade400,
+          centerTitle: true,
+          title: Text("Favorites"),
+          actions: []),
+      body: ListView.builder(
+        itemCount: fav.favNameList!.length,
+        itemBuilder: (context, index) {
+          return ListTile(
+            title: Text(
+                fav.favNameList![index] + ' ' + fav.favSurnameList![index]),
+            subtitle: Text(fav.favNumberList![index]),
+            trailing: IconButton(
+              highlightColor: Colors.transparent,
+              hoverColor: Colors.transparent,
+              icon: Icon(Icons.phone),
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (context) {
+                    return AlertDialog(
+                      title: Text(fav.favNumberList![index]),
+                    );
+                  },
+                );
+              },
+            ),
+          );
+        },
+      ),
     );
   }
 }

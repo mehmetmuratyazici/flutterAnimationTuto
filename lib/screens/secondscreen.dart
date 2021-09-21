@@ -7,8 +7,11 @@ import 'package:animation_tuto/widget/people.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'fourthscreen.dart';
+
 class Secondscreen extends StatefulWidget {
-  const Secondscreen( {Key? key, nameList, surnameList, numberList}) : super(key: key);
+  const Secondscreen({Key? key, nameList, surnameList, numberList})
+      : super(key: key);
 
   @override
   _SecondscreenState createState() => _SecondscreenState();
@@ -57,10 +60,10 @@ class _SecondscreenState extends State<Secondscreen> {
         print(index);
       });
     }
-    
+
     List<Widget> _pages = <Widget>[
       FavoritesScreen(),
-      contacts(),
+      recents(),
       People(),
       GetKeyPad(),
       Center(
@@ -119,11 +122,6 @@ class _SecondscreenState extends State<Secondscreen> {
         ]);
 
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.red.shade400,
-        centerTitle: true,
-        title: Text("Recents"),
-      ),
       bottomNavigationBar: navbar,
       body: IndexedStack(
         index: _selectedIndex,
@@ -132,7 +130,7 @@ class _SecondscreenState extends State<Secondscreen> {
     );
   }
 
-  dynamic contacts() {
+  dynamic recents() {
     return ListView.builder(
       itemCount: listItems!.length,
       itemBuilder: (context, index) {
