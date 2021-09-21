@@ -23,28 +23,37 @@ class PeopleProvider with ChangeNotifier {
     favNameList!.add(nameList![index]);
     favSurnameList!.add(surnameList![index]);
     favNumberList!.add(numberList![index]);
+    saveFavLists();
     notifyListeners();
   }
 
   removeFavorite(int index) {
-    favNameList!.removeWhere((element) => element == nameList![index]);
-    favSurnameList!.removeWhere((element) => element == surnameList![index]);
-    favNumberList!.removeWhere((element) => element == numberList![index]);
+    favNameList!.remove(nameList![index]);
+    favSurnameList!.remove(surnameList![index]);
+    favNumberList!.remove(numberList![index]);
+    saveFavLists();
     notifyListeners();
   }
 
-  setListuserData(String name, String surname, String number) async {
+  saveFavLists() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
-    if (prefs.getStringList("nameList") != null) {
-      nameList = (prefs.getStringList("nameList"))!;
-      surnameList = (prefs.getStringList("surnameList"))!;
-      numberList = (prefs.getStringList("numberList"))!;
-    }
+    await prefs.setStringList("favNameList", favNameList!);
+    await prefs.setStringList("favSurnameList", favSurnameList!);
+    await prefs.setStringList("favNumberList", favNumberList!);
+  }
+
+  setListuserData(String name, String surname, String number) {
     nameList!.add(name);
     surnameList!.add(surname);
     numberList!.add(number);
+    saveListContact();
     notifyListeners();
+  }
+
+  saveListContact() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
     await prefs.setStringList("nameList", nameList!);
     await prefs.setStringList("surnameList", surnameList!);
     await prefs.setStringList("numberList", numberList!);
@@ -60,6 +69,16 @@ class PeopleProvider with ChangeNotifier {
         : <String>[]);
     numberList = (prefs.getStringList("numberList") != null
         ? prefs.getStringList("numberList")
+        : <String>[]);
+
+    favNameList = (prefs.getStringList("favNameList") != null
+        ? prefs.getStringList("favNameList")
+        : <String>[]);
+    favSurnameList = (prefs.getStringList("favSurnameList") != null
+        ? prefs.getStringList("favSurnameList")
+        : <String>[]);
+    favNumberList = (prefs.getStringList("favNumberList") != null
+        ? prefs.getStringList("favNumberList")
         : <String>[]);
     print("cağrıldı");
 

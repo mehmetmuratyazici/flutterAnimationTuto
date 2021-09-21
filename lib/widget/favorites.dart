@@ -43,21 +43,19 @@ class _FavoritesState extends State<Favorites> {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 IconButton(
-                    onPressed: () {
+                  icon: !fav.checkIsFav(widget.index)
+                      ? Icon(Icons.star_border_outlined)
+                      : Icon(Icons.star),
+                  onPressed: () {
+                    if (!fav.checkIsFav(widget.index)) {
                       fav.addFavorite(widget.index);
-                    },
-                    icon: IconButton(
-                      icon: fav.checkIsFav(widget.index)
-                          ? Icon(Icons.remove)
-                          : Icon(Icons.favorite),
-                      onPressed: () {
-                        if (!fav.checkIsFav(widget.index)) {
-                          fav.addFavorite(widget.index);
-                        } else {
-                          fav.removeFavorite(widget.index);
-                        }
-                      },
-                    ))
+                      print("addFavorite");
+                    } else {
+                      fav.removeFavorite(widget.index);
+                      print("removeFavorite");
+                    }
+                  },
+                )
               ],
             ),
             Padding(
