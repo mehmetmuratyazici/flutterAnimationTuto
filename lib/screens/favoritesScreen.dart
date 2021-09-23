@@ -18,8 +18,10 @@ void changeScreen(BuildContext _context, Widget _widget) {
 
 
 class _FavoritesScreenState extends State<FavoritesScreen> {
+   
   @override
   Widget build(BuildContext context) {
+    
     final fav = Provider.of<PeopleProvider>(context);
     return Scaffold(
       appBar: AppBar(
@@ -38,8 +40,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
             ),
            
              IconButton(onPressed: (){
-               
-
+           
              },
              highlightColor: Colors.transparent,
              hoverColor: Colors.transparent,
@@ -50,10 +51,12 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
           
          
           ),
-      body: ListView.builder(        
+      body: ListView.builder(
+       
         itemCount: fav.favNameList!.length,
         itemBuilder: (context, index) {
           return ListTile(            
+            
             title: Text(
                 fav.favNameList![index] + ' ' + fav.favSurnameList![index]),
             subtitle: Text(fav.favNumberList![index]),
@@ -76,6 +79,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
           );
         },
       ),
+     
     );
   }
 }
