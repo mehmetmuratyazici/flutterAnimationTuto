@@ -1,5 +1,3 @@
-import 'dart:js';
-
 import 'package:animation_tuto/provider/people_provider.dart';
 import 'package:animation_tuto/widget/people.dart';
 import 'package:flutter/material.dart';
@@ -18,6 +16,8 @@ void changeScreen(BuildContext _context, Widget _widget) {
 
 class _FavoritesScreenState extends State<FavoritesScreen> {
   bool editing = false;
+  bool visible = false;
+
   @override
   Widget build(BuildContext context) {
     final fav = Provider.of<PeopleProvider>(context);
@@ -36,7 +36,13 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
             },
           ),
           IconButton(
-              onPressed: () {},
+              onPressed: () {
+                setState(() {
+                  visible = true;
+                  editing = !editing;
+                });
+                visible = editing;
+              },
               highlightColor: Colors.transparent,
               hoverColor: Colors.transparent,
               iconSize: 50,
@@ -45,80 +51,75 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
               ))
         ],
       ),
-      body: ListView.builder(
-        itemCount: fav.favNameList!.length,
-        itemBuilder: (context, index) {
-          return Stack(
-            children: [
-              AnimatedPositioned(
-                left: editing ? 50 : 0,
-                duration: Duration(seconds: 1),
-                curve: Curves.bounceInOut,
-                child: Container(
-                  child: SizedBox(
-                    width: MediaQuery.of(context).size.width,
-                    child: ListTile(
-                      title: Text(fav.favNameList![index] +
-                          ' ' +
-                          fav.favSurnameList![index]),
-                      subtitle: Text(fav.favNumberList![index]),
-                      trailing: IconButton(
-                        highlightColor: Colors.transparent,
-                        hoverColor: Colors.transparent,
-                        icon: Icon(Icons.phone),
-                        onPressed: () {
-                          showDialog(
-                            context: context,
-                            builder: (context) {
-                              return AlertDialog(
-                                title: Text(fav.favNumberList![index]),
-                              );
-                            },
-                          );
-                        },
+      body: Column(
+        children: [
+          Expanded(
+            child: ListView.builder(
+              itemCount: fav.favNameList!.length,
+              itemBuilder: (context, index) {
+                return Container(
+                  height: 50,
+                  child: Stack(
+                    children: <Widget>[
+                      AnimatedPositioned(
+                        left: !editing ? -50 : 0,
+                        child: Center(
+                          child: SizedBox(
+                            width: 50,
+                            child: FloatingActionButton(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                foregroundColor: Colors.transparent,
+                                backgroundColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                onPressed: () {},
+                                child: Icon(
+                                  Icons.remove_circle,
+                                  color: Colors.red,
+                                )),
+                          ),
+                        ),
+                        duration: Duration(milliseconds: 200),
                       ),
-                    ),
+                      AnimatedPositioned(
+                        left: editing ? 50 : 0,
+                        duration: Duration(milliseconds: 200),
+                        //curve: Curves.bounceInOut,
+                        child: SizedBox(
+                          width: MediaQuery.of(context).size.width,
+                          child: ListTile(
+                            title: Text(fav.favNameList![index] +
+                                ' ' +
+                                fav.favSurnameList![index]),
+                            subtitle: Text(fav.favNumberList![index]),
+                            trailing: SizedBox(
+                              width: 50,
+                              child: IconButton(
+                                highlightColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                icon: Icon(Icons.phone),
+                                onPressed: () {
+                                  showDialog(
+                                    context: context,
+                                    builder: (context) {
+                                      return AlertDialog(
+                                        title: Text(fav.favNumberList![index]),
+                                      );
+                                    },
+                                  );
+                                },
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                ),
-              ),
-            ],
-          );
-
-          // Dismissible(
-          //   key: Key(fav.favNameList![index]),
-          //   onDismissed: (direction){
-          //     setState(() {
-
-          //     fav.favNameList!.removeAt(index);
-          //       });
-
-          //   },
-          //    background: Container(color: Colors.red),
-
-          //   child: ListTile(
-
-          //   title: Text(
-          //       fav.favNameList![index] + ' ' + fav.favSurnameList![index]),
-          //   subtitle: Text(fav.favNumberList![index]),
-
-          //   trailing: IconButton(
-          //     highlightColor: Colors.transparent,
-          //     hoverColor: Colors.transparent,
-          //     icon: Icon(Icons.phone),
-          //     onPressed: () {
-          //       showDialog(
-          //         context: context,
-          //         builder: (context) {
-          //           return AlertDialog(
-          //             title: Text(fav.favNumberList![index]),
-          //           );
-          //         },
-          //       );
-          //     },
-          //   ),
-          // )
-          // );
-        },
+                );
+              },
+            ),
+          ),
+        ],
       ),
     );
   }
