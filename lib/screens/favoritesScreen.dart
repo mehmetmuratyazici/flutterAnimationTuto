@@ -1,6 +1,11 @@
+import 'dart:html';
+
 import 'package:animation_tuto/provider/people_provider.dart';
 import 'package:animation_tuto/widget/people.dart';
+import 'package:flutter/animation.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 import 'package:provider/provider.dart';
 
 class FavoritesScreen extends StatefulWidget {
@@ -16,7 +21,10 @@ void changeScreen(BuildContext _context, Widget _widget) {
 
 class _FavoritesScreenState extends State<FavoritesScreen> {
   bool editing = false;
-  bool visible = false;
+  bool edd=false;
+  
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -37,11 +45,13 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
           ),
           IconButton(
               onPressed: () {
-                setState(() {
-                  visible = true;
-                  editing = !editing;
+                setState(() {       
+                
+                 editing = !editing;
+                 
                 });
-                visible = editing;
+             
+                
               },
               highlightColor: Colors.transparent,
               hoverColor: Colors.transparent,
@@ -58,22 +68,29 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
               itemCount: fav.favNameList!.length,
               itemBuilder: (context, index) {
                 return Container(
+                 
                   height: 50,
-                  child: Stack(
-                    children: <Widget>[
+                  child: Stack(                  
+                    children: [
                       AnimatedPositioned(
                         left: !editing ? -50 : 0,
+                        
                         child: Center(
                           child: SizedBox(
                             width: 50,
-                            child: FloatingActionButton(
-                                splashColor: Colors.transparent,
-                                focusColor: Colors.transparent,
-                                foregroundColor: Colors.transparent,
-                                backgroundColor: Colors.transparent,
-                                hoverColor: Colors.transparent,
-                                onPressed: () {},
-                                child: Icon(
+                            child: IconButton(
+                             padding: new EdgeInsets.all(18),
+                             highlightColor: Colors.transparent,
+                             hoverColor: Colors.transparent,                         
+                               onPressed: () { 
+                                   setState(() {   
+                                   edd=!edd;                 
+                                 
+                                 });
+                                  editing=!editing;                  
+                                            
+                                },
+                               icon: Icon(
                                   Icons.remove_circle,
                                   color: Colors.red,
                                 )),
@@ -81,19 +98,27 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
                         ),
                         duration: Duration(milliseconds: 200),
                       ),
+                   
+                      
                       AnimatedPositioned(
+
                         left: editing ? 50 : 0,
+
                         duration: Duration(milliseconds: 200),
                         //curve: Curves.bounceInOut,
                         child: SizedBox(
+                          
                           width: MediaQuery.of(context).size.width,
                           child: ListTile(
+                     
+                        
                             title: Text(fav.favNameList![index] +
                                 ' ' +
                                 fav.favSurnameList![index]),
                             subtitle: Text(fav.favNumberList![index]),
                             trailing: SizedBox(
-                              width: 50,
+                              width: 100,
+                              
                               child: IconButton(
                                 highlightColor: Colors.transparent,
                                 hoverColor: Colors.transparent,
@@ -113,6 +138,32 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
                           ),
                         ),
                       ),
+                            AnimatedPositioned(
+                              
+                           right: !edd ? -50 : 0,
+                       
+                        child: Center(
+                          child: SizedBox(
+                            width: 50,
+                            child:IconButton(
+                              highlightColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              padding: new EdgeInsets.all(16),
+                              onPressed:(){
+                               setState(() {
+                                 fav.favNameList!.removeAt(index);
+                                });
+                              }, 
+                              icon:Text("Sil",style: TextStyle(color: Colors.red),)
+                             )
+                             
+                          ),
+                        ),
+                        duration: Duration(milliseconds: 200),
+                      ),
+                      
+                      
+                  
                     ],
                   ),
                 );
